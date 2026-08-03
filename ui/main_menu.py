@@ -15,15 +15,12 @@ def create_main_menu(root):
         width=100,
         height=50,
         anchor="center",
-        command=lambda:dice_roll.roll(root)
     )
     button.grid(
         row=3,
         column=2
     )
 
-    #main_image = helpers.prepare_image(root,"assets/dicepile.png",300)
-    #main_image.grid(row=2,column=2)
     
     
 

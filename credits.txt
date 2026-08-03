@@ -1,0 +1,8 @@
+Lead Developer:
+    Christopher Herriman Jr
+
+Lead Artist:
+    Christopher Herriman Jr
+
+Audio:
+    Main Menu Music -> 8bitsample.wav by KassyARF -- https://freesound.org/s/581682/ -- License: Creative Commons 0

@@ -12,3 +12,5 @@ DARK_WHITE = "#E1D9D1"
 dice = []
 for i in range(6):
     dice.append(helpers.resource_path("assets/die_" + str(i+1) + ".png"))
+
+main_menu_music = helpers.resource_path("audio/music/main_menu.wav")

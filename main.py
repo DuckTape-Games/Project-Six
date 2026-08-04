@@ -3,7 +3,7 @@ Code Name: Project Six
 Concept: Dice based roguelike game
 Lead Developer: Chris Herriman Jr
 Publisher: DuckTape Games
-Start Date: 4/27/2026
+Development Start 7/24/2026
 '''
 
 #############

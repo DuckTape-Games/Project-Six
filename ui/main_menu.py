@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from utils import theme, helpers
 from gameplay import dice_roll
+from ui import test_run
 
 
 def create_main_menu(root):
@@ -15,6 +16,7 @@ def create_main_menu(root):
         width=100,
         height=50,
         anchor="center",
+        command=lambda:test_run.start_run(root)
     )
     button.grid(
         row=3,

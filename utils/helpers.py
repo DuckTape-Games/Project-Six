@@ -1,5 +1,5 @@
 import os, sys #Used for file based systems
-from PIL import Image
+from PIL import Image, ImageDraw
 import customtkinter as ctk
 
 ### Makes onefile mode work in pyinstaller
@@ -109,3 +109,69 @@ def prepare_image(root, image, new_width=None, new_height=None):
 
 
 
+def clear_screen(root):
+    for widget in root.winfo_children():
+        widget.destroy()
+
+
+def create_gradient_background(
+    root,
+    width,
+    height,
+    start_color,
+    end_color,
+    direction="vertical"
+):
+    """
+    Creates and places a gradient background.
+
+    direction:
+        "vertical"   = top to bottom
+        "horizontal" = left to right
+    """
+
+    gradient = Image.new("RGB", (width, height))
+    draw = ImageDraw.Draw(gradient)
+
+    start_rgb = Image.new("RGB", (1, 1), start_color).getpixel((0, 0))
+    end_rgb = Image.new("RGB", (1, 1), end_color).getpixel((0, 0))
+
+    distance = height if direction == "vertical" else width
+
+    for i in range(distance):
+        ratio = i / max(distance - 1, 1)
+
+        color = tuple(
+            int(start_rgb[channel] +
+                (end_rgb[channel] - start_rgb[channel]) * ratio)
+            for channel in range(3)
+        )
+
+        if direction == "vertical":
+            draw.line((0, i, width, i), fill=color)
+        else:
+            draw.line((i, 0, i, height), fill=color)
+
+    gradient_image = ctk.CTkImage(
+        light_image=gradient,
+        dark_image=gradient,
+        size=(width, height)
+    )
+
+    background_label = ctk.CTkLabel(
+        root,
+        text="",
+        image=gradient_image
+    )
+
+    background_label.place(
+        x=0,
+        y=0,
+        relwidth=1,
+        relheight=1
+    )
+
+    background_label.image = gradient_image
+    background_label.lower()
+
+    return background_label

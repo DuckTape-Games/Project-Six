@@ -16,7 +16,7 @@ import customtkinter as ctk #Used for UI -> Works within turtle
 from pygame import mixer #Used for sound and music
 import json #Used for data storage
 
-from utils import theme
+from utils import theme,helpers
 from ui import main_menu
 
 #Variables
@@ -26,6 +26,7 @@ root = ctk.CTk(fg_color=theme.BACKGROUND_COLOR)
 root.geometry(str(SCREEN_X)+"x"+str(SCREEN_Y))
 root.resizable(False,False)
 root._set_appearance_mode("dark")
+
 
 mixer.init()
 mixer.music.load(theme.main_menu_music)
